@@ -4,7 +4,7 @@ var App = function(server) {
   this.friends = [];
 };
 
-var app = new App('https://api.parse.com/1/classes/messages');
+var app = new App('http://127.0.0.1:3000/classes/messages');
 
 // Instantiate the app and load 10 most recent messages
 App.prototype.init = function() {

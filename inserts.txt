@@ -1,0 +1,9 @@
+insert into users (username) values ('Kay');
+insert into users (username) values ('Brenner');
+insert into users (username) values ('Logan');
+insert into rooms (roomname) values ('Lobby');
+insert into rooms (roomname) values ('Kitchen');
+insert into messages (text, id_users, id_rooms) values ('Kays first words', 1, 1);
+insert into messages (text, id_users, id_rooms) values ('Brenners first words', 2, 1);
+insert into messages (text, id_users, id_rooms) values ('Logans first words', 3, 1);
+insert into messages (text, id_users, id_rooms) values ('I\'m in the kitchen!', 2, 2);

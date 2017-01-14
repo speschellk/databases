@@ -4,11 +4,11 @@ module.exports = {
   messages: {
     // a function which produces all the messages
     get: function (res) {
-      db.query('SELECT * from messages', function(err, rows, fields) {
+      db.query('select messages.id, messages.text, users.username, rooms.roomname from messages, users, rooms where users.id = messages.id_Users and rooms.id = messages.id_Rooms;', function(err, rows, fields) {
         if (!err) {
           console.log('model get function');
           console.log('rows from model: ', rows);
-          res.send('this works from the model');
+          res.send({results: rows});
           // return rows;
         } else {
           console.log('Error while performing query.');

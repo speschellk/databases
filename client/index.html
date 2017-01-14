@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>chatterbox</title>
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <!-- dependencies -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/backbone/backbone.js"></script>
+    <script src="bower_components/chance/chance.js"></script>
+    <script>
+      // YOU DO NOT NEED TO EDIT THIS CODE
+      if (!/(&|\?)username=/.test(window.location.search)) {
+        var newSearch = window.location.search;
+        if (newSearch !== '' & newSearch !== '?') {
+          newSearch += '&';
+        }
+        newSearch += 'username=' + (prompt('What is your name?') || 'anonymous');
+        window.location.search = newSearch;
+      }
+    </script>
+    <!-- your scripts -->
+    <script src="env/config.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/events.js"></script>
+  </head>
+  <body>
+    <div id="main">
+      <h1>chatterbox</h1>
+      <div id='room-select-container'>
+        <span>Room: </span>
+        <select id="roomSelect" name="rooms">
+          <option>lobby</option>
+          <option>social</option>
+        </select>
+        <a href="#" class="create-room">Create new room</a>
+        <div class="create-room-input hidden">
+          <input type="text" name="room">
+          <button class="submit room-btn">Submit</button>
+        </div>
+      </div>
+      <div class="message-input">
+        <input type="text" name="message">
+        <button class="submit msg-btn">Send</button>
+      </div>
+      <ul id="chats">
+      </ul>
+    </div>
+  </body>
+</html>

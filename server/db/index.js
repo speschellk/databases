@@ -6,20 +6,20 @@ var express = require('express');
 var mysql = require('mysql');
 // var app = require('../app');
 
-exports.connection = mysql.createConnection({
+module.exports = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
   database: 'chat'
 });
 
-// exports.connection.connect(function(err) {
-//   if (!err) {
-//     console.log('Database is connected ... nn');    
-//   } else {
-//     console.log('Error connecting database ... nn');    
-//   }
-// });
+module.exports.connect(function(err) {
+  if (!err) {
+    console.log('Database is connected');    
+  } else {
+    console.log('Error connecting database');    
+  }
+});
 
 // exports.connection.query('INSERT into users (username) values ("Stan")', function(err, rows, fields) {
 //   if (!err) {

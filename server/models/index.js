@@ -3,10 +3,13 @@ var db = require('../db');
 module.exports = {
   messages: {
     // a function which produces all the messages
-    get: function () {
+    get: function (res) {
       db.query('SELECT * from messages', function(err, rows, fields) {
         if (!err) {
-          console.log('Messages are: ', rows);
+          console.log('model get function');
+          console.log('rows from model: ', rows);
+          res.send('this works from the model');
+          // return rows;
         } else {
           console.log('Error while performing query.');
         }

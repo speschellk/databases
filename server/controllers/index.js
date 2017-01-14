@@ -5,8 +5,10 @@ module.exports = {
     // a function which handles a get request for all messages
     get: function (req, res) {
       console.log('controller get function');
-      // call models.messages.get?
-      res.send('hello working world');
+      models.messages.get(res);
+      
+      //getAsync = Promise.promisify(models.messages.get);
+      //res.send('hello working world');
     }, 
     // a function which handles posting a message to the database
     post: function (req, res) {

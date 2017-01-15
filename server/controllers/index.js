@@ -1,19 +1,23 @@
 var models = require('../models');
+var getUserIdAsync = models.users.getUserIdAsync;
+var getRoomIdAsync = models.rooms.getRoomIdAsync;
 
 module.exports = {
   messages: {
     // a function which handles a get request for all messages
     get: function (req, res) {
-      console.log('controller get function');
       models.messages.get(res);
-      
-      //getAsync = Promise.promisify(models.messages.get);
-      //res.send('hello working world');
     }, 
     // a function which handles posting a message to the database
     post: function (req, res) {
-      console.log('controller post function');
-      // call models.messages.post?
+      var username = req.body.username;
+      var text = req.body.text;
+      var roomname = req.body.roomname;
+
+      getUserIdAsync(username)
+      .then((userId) => { return getRoomIdAsync(userId, roomname); })
+      .then((idArray) => { return models.messages.post(text, idArray[0], idArray[1]); })
+      .catch((err) => { console.log(err); });
     } 
   },
 
